@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新纪元设计大赛 - 四套方案总览</title>
+<style>
+  :root { --z: .6; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #f2f2f2;
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .top {
+    position: sticky; top: 0; z-index: 20;
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 12px 20px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .top h1 { font-size: 16px; margin: 0; font-weight: 800; letter-spacing: .5px; }
+  .top .hint { font-size: 12px; color: #999; }
+  .top .zoom { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #666; }
+  select {
+    font-size: 12px; padding: 4px 8px; border: 1px solid #ddd;
+    border-radius: 6px; background: #fff; color: #333;
+  }
+  .row {
+    display: flex; gap: 16px; padding: 18px 20px 40px;
+    align-items: flex-start; overflow-x: auto;
+  }
+  .card {
+    flex: 0 0 auto;
+    background: #fff;
+    border: 2px solid transparent;
+    border-radius: 14px;
+    padding: 8px 10px 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.07);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .card:hover, .card.active {
+    border-color: #cf4437;
+    box-shadow: 0 4px 16px rgba(207,68,55,.18);
+  }
+  .cap {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12.5px; font-weight: 700; padding: 2px 0 9px;
+  }
+  .cap .no {
+    background: #cf4437; color: #fff; border-radius: 5px;
+    font-size: 11px; font-weight: 700; padding: 2px 7px; flex-shrink: 0;
+  }
+  .cap .sub { font-weight: 400; font-size: 11px; color: #999; margin-left: auto; }
+  .cap a {
+    font-size: 11px; font-weight: 400; color: #2f66c0;
+    text-decoration: none; margin-left: 8px; white-space: nowrap;
+  }
+  .cap a:hover { text-decoration: underline; }
+  .frame-wrap {
+    width: calc(500px * var(--z));
+    height: calc(980px * var(--z));
+    overflow: hidden;
+    border-radius: 6px;
+  }
+  iframe {
+    width: 500px; height: 980px;
+    border: 0; display: block;
+    transform: scale(var(--z));
+    transform-origin: top left;
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>新纪元设计大赛 · 四套 tab 排布方案</h1>
+  <span class="hint">每个原型都可独立点击操作（切 tab、进去年回顾 / 校企合作）；鼠标移到某个原型上会有红框标记</span>
+  <div class="zoom">
+    <span>缩放</span>
+    <select id="zoom">
+      <option value="1">100%</option>
+      <option value="0.8">80%</option>
+      <option value="0.7">70%</option>
+      <option value="0.6" selected>60%</option>
+      <option value="0.5">50%</option>
+    </select>
+  </div>
+</div>
+
+<div class="row" id="row">
+
+  <div class="card">
+    <div class="cap">
+      <span class="no">1</span>方案E2 · 矮Hero窄竖排
+      <span class="sub">72px 通底竖栏</span>
+      <a href="e2.html" target="_blank">单独打开</a>
+    </div>
+    <div class="frame-wrap"><iframe src="e2.html" title="方案E2 矮Hero窄竖排"></iframe></div>
+  </div>
+
+  <div class="card">
+    <div class="cap">
+      <span class="no">2</span>方案B · 单行横滑
+      <span class="sub">6 项横滑，箭头可点</span>
+      <a href="b.html" target="_blank">单独打开</a>
+    </div>
+    <div class="frame-wrap"><iframe src="b.html" title="方案B 单行横滑"></iframe></div>
+  </div>
+
+  <div class="card">
+    <div class="cap">
+      <span class="no">3</span>方案C · 两行 3×2
+      <span class="sub">对比参考</span>
+      <a href="c.html" target="_blank">单独打开</a>
+    </div>
+    <div class="frame-wrap"><iframe src="c.html" title="方案C 两行3x2"></iframe></div>
+  </div>
+
+  <div class="card">
+    <div class="cap">
+      <span class="no">4</span>方案D · 导航带
+      <span class="sub">4 主 tab + 深红导航带</span>
+      <a href="d.html" target="_blank">单独打开</a>
+    </div>
+    <div class="frame-wrap"><iframe src="d.html" title="方案D 导航带"></iframe></div>
+  </div>
+
+  <div class="card">
+    <div class="cap">
+      <span class="no">5</span>方案F · 宫格导航
+      <span class="sub">核心大卡 + 小入口</span>
+      <a href="f.html" target="_blank">单独打开</a>
+    </div>
+    <div class="frame-wrap"><iframe src="f.html" title="方案F 宫格导航"></iframe></div>
+  </div>
+
+</div>
+
+<script>
+  var row = document.getElementById('row');
+  var cards = row.querySelectorAll('.card');
+
+  cards.forEach(function (c) {
+    c.addEventListener('mouseenter', function () { c.classList.add('active'); });
+    c.addEventListener('mouseleave', function () { c.classList.remove('active'); });
+    c.addEventListener('click', function () {
+      cards.forEach(function (o) { o.classList.remove('active'); });
+      c.classList.add('active');
+    });
+  });
+
+  document.getElementById('zoom').addEventListener('change', function (e) {
+    document.documentElement.style.setProperty('--z', e.target.value);
+  });
+</script>
+
+  <p style="text-align:center;font-size:13px;color:#888;margin:8px 0 24px;">单文件版（一次性打包全部方案）：<a href="compare.html">新纪元设计大赛_四方案对比.html</a></p>
+</body>
+</html>
