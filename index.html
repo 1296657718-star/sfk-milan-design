@@ -1029,6 +1029,10 @@
   .hero-main{margin-top:30px;padding-bottom:6px;}
   .hero-slogan{font-size:29px;}
   .badge10{transform:scale(.78);transform-origin:top right;}
+  /* 底部按钮栏固底：内容不足一屏时也钉在手机框底部 */
+  .phone{display:flex;flex-direction:column;}
+  .phone > *{flex-shrink:0;}
+  .bottom-bar{margin-top:auto;}
   </style>
 </head>
 <body>
